@@ -32,7 +32,7 @@ repositories {
 		name = "Progwml6 maven"
 		url = "http://dvs1.progwml6.com/files/maven"
 	}
-	maven {url "http://tehnut.info/maven"}
+	//maven {url "http://tehnut.info/maven"}
 	maven {
 		name = "tesla"
 		url 'https://maven.mcmoddev.com/'
