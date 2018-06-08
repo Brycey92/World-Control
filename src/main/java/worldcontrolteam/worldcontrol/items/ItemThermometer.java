@@ -78,10 +78,10 @@ public class ItemThermometer extends WCBaseItem {
                             WCUtility.translateFormatted("thermometer.switchTo", WCUtility.translate("thermometer.mode." + heatTypes.get(itemStack.getTagCompound().getInteger("type")).getUnloalizedName()))
                     ));
                 }
-                return new ActionResult(EnumActionResult.SUCCESS, itemStack);
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
             }
         }
-        return new ActionResult(EnumActionResult.PASS, itemStack);
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, itemStack);
     }
 
     @SideOnly(Side.CLIENT)

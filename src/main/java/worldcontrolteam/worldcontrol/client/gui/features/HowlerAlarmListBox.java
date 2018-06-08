@@ -154,10 +154,10 @@ public class HowlerAlarmListBox extends GuiButton {
 
         Tessellator tessellator = Tessellator.getInstance();
         tessellator.getBuffer().begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR);
-        this.draw(tessellator, (sliderX), sliderY + sliderHeight - 1, zLevel, 131 / 256F, (18) / 256F);
-        this.draw(tessellator, sliderX + SCROLL_WIDTH - 1, sliderY + sliderHeight - 1, zLevel, (131 + SCROLL_WIDTH - 1) / 256F, (18) / 256F);
-        this.draw(tessellator, sliderX + SCROLL_WIDTH - 1, sliderY + 1, zLevel, (131 + SCROLL_WIDTH - 1) / 256F, (17) / 256F);
-        this.draw(tessellator, (sliderX), sliderY + 1, zLevel, 131 / 256F, (17) / 256F);
+        draw(tessellator, (sliderX), sliderY + sliderHeight - 1, zLevel, 131 / 256F, (18) / 256F);
+        draw(tessellator, sliderX + SCROLL_WIDTH - 1, sliderY + sliderHeight - 1, zLevel, (131 + SCROLL_WIDTH - 1) / 256F, (18) / 256F);
+        draw(tessellator, sliderX + SCROLL_WIDTH - 1, sliderY + 1, zLevel, (131 + SCROLL_WIDTH - 1) / 256F, (17) / 256F);
+        draw(tessellator, (sliderX), sliderY + 1, zLevel, 131 / 256F, (17) / 256F);
         tessellator.draw();
 
         drawTexturedModalRect(sliderX, sliderY + sliderHeight - 1, 131, 19, SCROLL_WIDTH - 1, 1);

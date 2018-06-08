@@ -70,7 +70,7 @@ public class ClientUtil {
         });
         NonNullList<ItemStack> subBlocks = NonNullList.create();
         block.getSubBlocks(null, subBlocks);
-        Iterator var3 = subBlocks.iterator();
+        Iterator<ItemStack> var3 = subBlocks.iterator();
 
         while (var3.hasNext()) {
             ItemStack stack = (ItemStack) var3.next();
