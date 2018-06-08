@@ -104,7 +104,7 @@ public class Platform {
     }
 
     public static int hashItemStack(ItemStack stack) {
-        if (stack == null)
+        if (stack == ItemStack.EMPTY)
             return -1;
         String name = stack.getItem().getUnlocalizedName(stack);
         return name.hashCode() << 8 | stack.getItemDamage();

@@ -1,5 +1,7 @@
 package worldcontrolteam.worldcontrol.inventory.container;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
@@ -41,45 +43,49 @@ public class ContainerRemotePanel extends Container {
     }
 
     @Override
+    @Nonnull
     public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-        ItemStack stack = null;
+        ItemStack stack = ItemStack.EMPTY;
         Slot slots = this.inventorySlots.get(slot);
-
-        if (slots.getStack() != ItemStack.EMPTY)
-            if (slots.getStack().getItem() == WCContent.REMOTE_PANEL)
-                return null;
-
-        if (slots != null && slots.getHasStack()) {
-            ItemStack itemstackR = slots.getStack();
-            stack = itemstackR.copy();
-
-            if (slot == 0) {
-                boolean fixed = false;
-                for (int h = 1; h < 10; h++) {
-                    Slot know = this.inventorySlots.get(h);
-                    if (!know.getHasStack()) {
-                        know.putStack(slots.getStack());
-                        slots.decrStackSize(1);
-                        fixed = true;
+        
+        if(slots != null) {
+            if (slots.getStack() != ItemStack.EMPTY)
+                if (slots.getStack().getItem() == WCContent.REMOTE_PANEL)
+                    return ItemStack.EMPTY;
+    
+            if (slots.getHasStack()) {
+                ItemStack itemstackR = slots.getStack();
+                stack = itemstackR.copy();
+    
+                if (slot == 0) {
+                    boolean fixed = false;
+                    for (int h = 1; h < 10; h++) {
+                        Slot know = this.inventorySlots.get(h);
+                        if (!know.getHasStack()) {
+                            know.putStack(slots.getStack());
+                            slots.decrStackSize(1);
+                            fixed = true;
+                        }
                     }
-                }
-                if (!fixed)
-                    return null;
-                slots.onSlotChange(itemstackR, stack);
-            } else if (slots.getStack().getItem() instanceof IProviderCard && !this.inventorySlots.get(0).getHasStack()) {
-                this.inventorySlots.get(0).putStack(itemstackR);
-                slots.decrStackSize(1);
-                slots.onSlotChange(itemstackR, stack);
-                this.inventorySlots.get(0).onSlotChanged();
-            } else return null;
+                    if (!fixed)
+                        return null;
+                    slots.onSlotChange(itemstackR, stack);
+                } else if (slots.getStack().getItem() instanceof IProviderCard && !this.inventorySlots.get(0).getHasStack()) {
+                    this.inventorySlots.get(0).putStack(itemstackR);
+                    slots.decrStackSize(1);
+                    slots.onSlotChange(itemstackR, stack);
+                    this.inventorySlots.get(0).onSlotChanged();
+                } else return null;
+            }
         }
         return stack;
     }
 
     @Override
+    @Nonnull
     public ItemStack slotClick(int slot, int dragType, ClickType click, EntityPlayer player) {
         if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItemMainhand())
-            return null;
+            return ItemStack.EMPTY;
         return super.slotClick(slot, dragType, click, player);
     }
 }

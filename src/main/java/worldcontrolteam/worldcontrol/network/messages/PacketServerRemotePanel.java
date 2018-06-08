@@ -44,7 +44,7 @@ public class PacketServerRemotePanel implements IMessage {
             ItemStack stack = message.itemstack;
             // NCLog.error(stack);
 
-            if (stack != null && stack.getItem() instanceof ItemBaseCard) {
+            if (stack != ItemStack.EMPTY && stack.getItem() instanceof ItemBaseCard) {
                 ItemBaseCard card = (ItemBaseCard) stack.getItem();
                 CardState state = card.update(ctx.getServerHandler().player.mcServer.worlds[0], stack);
                 // CardState state = ((IPanelDataSource)

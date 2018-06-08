@@ -20,7 +20,9 @@ public class InventoryItem implements IInventory, ISlotItemFilter {
     private ItemStack[] inventory = new ItemStack[INV_SIZE];
 
     public InventoryItem(ItemStack stack) {
-        this.inventory[0] = ItemStack.EMPTY;
+    	for(int i = 0; i < INV_SIZE; i++)
+    		this.inventory[i] = ItemStack.EMPTY;
+    	
         this.invItem = stack;
         if (stack != ItemStack.EMPTY) {
             if (!stack.hasTagCompound())
@@ -41,7 +43,7 @@ public class InventoryItem implements IInventory, ISlotItemFilter {
 
     @Override
     public ItemStack getStackInSlot(int slot) {
-        return inventory[slot] == null ? ItemStack.EMPTY : inventory[slot];
+        return inventory[slot];
     }
 
     @Override
