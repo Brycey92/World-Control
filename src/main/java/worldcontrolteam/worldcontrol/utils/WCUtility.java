@@ -5,7 +5,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ChunkCache;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.fml.common.FMLLog;
 import org.apache.logging.log4j.Level;
 import worldcontrolteam.worldcontrol.WorldControl;
 import worldcontrolteam.worldcontrol.init.Translator;
@@ -32,7 +31,7 @@ public class WCUtility {
     public static final int WHITE = RGBToInt(255, 255, 255);
 
     public static void log(Level logLevel, Object object) {
-        FMLLog.log(WorldControl.MODID, logLevel, String.valueOf(object));
+        WorldControl.logger.log(logLevel, String.valueOf(object));
     }
 
     public static void debug(Object object) {

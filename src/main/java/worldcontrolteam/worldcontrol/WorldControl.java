@@ -20,6 +20,8 @@ import worldcontrolteam.worldcontrol.utils.WCUtility;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.Logger;
+
 @Mod(modid = WorldControl.MODID, name = WorldControl.NAME, version = "@VERSION@")
 public class WorldControl {
 
@@ -34,9 +36,12 @@ public class WorldControl {
     public static Side SIDE; // As in client vs server
     public static Modules MODULES = new Modules();
     protected static ArrayList<IHeatSeeker> HEAT_SOURCES = new ArrayList<>();
+    
+    public static Logger logger;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        logger = event.getModLog();
         SIDE = event.getSide();
         ProgressManager.ProgressBar bar = ProgressManager.push("World Control", 1);
         WCUtility.info("We are in pre-init!");
